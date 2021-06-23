@@ -1,6 +1,11 @@
 package liveExempale;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideConfig;
+import com.codeborne.selenide.SelenideDriver;
 import io.restassured.RestAssured;
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +18,12 @@ public class RegressinTests {
     @BeforeAll
     static void setup() {
         RestAssured.baseURI = "https://reqres.in";
+
     }
 
     @Test
     void successUsersListTest() {
+
         given()
                 .when()
                 .get("/api/users?page=2")
@@ -52,6 +59,9 @@ public class RegressinTests {
                 .statusCode(400)
                 .body("error", is("Missing password"));
     }
+
+
+
 
 
 }
