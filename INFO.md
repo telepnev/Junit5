@@ -17,10 +17,9 @@ public static final String (int, double, etc ) - это хорошо.
 Configuration.browser = "chrome"; - тоже лучше избежать, так как статический.
 
 Такое исполнение лучше для многопоточности
+@Chrome
 @Test
-void example() {
-SelenideDriver driver = new SelenideDriver(new SelenideConfig().browser("chrome"));
-driver.open();
-driver.$("");
-driver.$("").shouldBe(Condition.visible);
+void yaTest(SelenideDriver driver) {
+driver.open("https://ya.ru/");
+driver.$("button[type='submit']").shouldHave(text("Найти"));
 }
